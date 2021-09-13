@@ -27,12 +27,12 @@ class TestApp(unittest.TestCase):
         self.assertListEqual(
             list1=get_entity_positions(text_1),
             list2=[
-                ('Taliban', 4, 10),
-                ('four', 91, 94),
-                ('UN', 130, 131),
-                ('Ravina Shamdasani', 244, 260),
-                ('UN', 267, 268),
-                ('Geneva', 312, 317),
+                ('Taliban', 4, 11),
+                ('four', 91, 95),
+                ('UN', 130, 132),
+                ('Ravina Shamdasani', 244, 261),
+                ('UN', 267, 269),
+                ('Geneva', 312, 318),
             ]
         )
 
@@ -40,10 +40,10 @@ class TestApp(unittest.TestCase):
         self.assertListEqual(
             list1=get_entity_positions(text_2),
             list2=[
-                ('Taliban', 25, 31),
-                ('Islamist', 123, 130),
-                ('this week', 222, 230),
-                ('Taliban', 267, 273),
+                ('Taliban', 25, 32),
+                ('Islamist', 123, 131),
+                ('this week', 222, 231),
+                ('Taliban', 267, 274),
             ]
         )
 
@@ -51,11 +51,11 @@ class TestApp(unittest.TestCase):
         self.assertListEqual(
             list1=get_entity_positions(text_3),
             list2=[
-                ('Shamdasani', 49, 58),
-                ('one', 156, 158),
-                ('two', 239, 241),
-                ('Afghan', 243, 248),
-                ('earlier this week', 300, 316),
+                ('Shamdasani', 49, 59),
+                ('one', 156, 159),
+                ('two', 239, 242),
+                ('Afghan', 243, 249),
+                ('earlier this week', 300, 317),
             ]
         )
 
