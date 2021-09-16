@@ -81,21 +81,11 @@ def get_entity_positions(text: str or spacy.tokens.Doc):
         ent_n_positions: list = list()
         entities = doc.ents
 
-        for token in doc.ents:
-            token_len = len(token.text)
-
-            start = doc.text.find(token.text)
-            # create new doc, where entity found is removed
-            # this is done incase a word appears twice and since the string's
-            # find method returns the first match
-            new_doc = doc.text.replace(token.text, 'X'*token_len)
-            new_doc = nlp(new_doc)
-
-            # update doc with the new_doc
-            doc = new_doc
-
-            ent_n_positions.append((token.text, start, start+token_len -1 ))
-        return new_doc.text
+        for token in entities:
+            start = token.start_char
+            end = token.end_char
+            ent_n_positions.append((token.text, start, end))
+        return ent_n_positions
 
 
 # run if text is entered and submitted
