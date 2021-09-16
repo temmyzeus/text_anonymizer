@@ -39,16 +39,15 @@ def x_anonymize(text: str or spacy.tokens.Doc) -> str:
         doc = nlp(text.strip())
     else:
         raise TypeError('Text must be String or Spacy Doc')
+    entities = doc.ents
+    anonymized_text = doc.text
 
-    for token in doc.ents:
+    for token in entities:
         token_len = len(token.text)
-
-        # create new doc, where entity found is replaced by X
-        anonymized_text = doc.text.replace(token.text, 'X'*token_len)
-        anonymized_doc = nlp(anonymized_text)
+        anonymized_text = anonymized_text.replace(token.text, 'X'*token_len)
 
         # update doc with the new_doc
-        doc = anonymized_doc
+        # doc = anonymized_doc
     return anonymized_text
 
 
