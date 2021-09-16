@@ -93,7 +93,5 @@ if text:
     doc = nlp(text)
     st.caption('Texts and Entities')
 
-    anonymized_text = x_anonymize(text)
-
-    # st.write([(token.text, token.ent_iob_) for token in doc])
-    st.write(anonymized_text)
+    entity_pos = get_entity_positions(text)
+    st.write(entity_pos)
