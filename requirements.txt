@@ -288,6 +288,7 @@ tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.0
 tensorflow==2.5.0
 tensorflow-estimator==2.5.0
+tensorflow-text==2.6.0
 termcolor==1.1.0
 terminado==0.9.4
 testpath==0.4.4
