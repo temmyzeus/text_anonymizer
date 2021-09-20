@@ -1,7 +1,10 @@
 from typing import Optional
-from fastapi import FastAPI
-from entity_anonymizer import get_entity_positions, x_anonymize
+
 import uvicorn
+from fastapi import FastAPI
+
+from entity_anonymizer import get_entity_positions, x_anonymize
+
 
 api = FastAPI()
 
