@@ -1,5 +1,5 @@
 import streamlit as st
-from entity_anonymizer import nlp, x_anonymize, get_entity_positions
+from utils.entity_anonymizer import nlp, x_anonymize, get_entity_positions
 
 
 st.title('Text Anonymizer')
