@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
-from app import get_entity_positions, x_anonymize
+from entity_anonymizer import get_entity_positions, x_anonymize
+import uvicorn
 
 api = FastAPI()
 
@@ -23,3 +24,6 @@ def get_anonymized(text: str):
     return {
         'anonymized_text': anonymized_text
     }
+
+if __name__ == '__main__':
+    uvicorn.run('api:api', host='0.0.0.0', port=8000)
