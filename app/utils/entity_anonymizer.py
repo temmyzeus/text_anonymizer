@@ -1,8 +1,9 @@
 import en_core_web_sm
+from spacy.tokens import Doc
 
 nlp = en_core_web_sm.load()
 
-def x_anonymize(text: str or spacy.tokens.Doc) -> str:
+def x_anonymize(text: str or Doc) -> str:
     """
     Anonymize Name Entities by Replacing them with X
 
@@ -18,7 +19,7 @@ def x_anonymize(text: str or spacy.tokens.Doc) -> str:
     global nlp
 
     # get list of tokens if type is spacy doc or string
-    if isinstance(text, spacy.tokens.Doc):
+    if isinstance(text, Doc):
         doc = text
     elif isinstance(text, str):
         # make string spacy doc and tokenize to utilize spacy tokenizer
@@ -36,7 +37,7 @@ def x_anonymize(text: str or spacy.tokens.Doc) -> str:
         # doc = anonymized_doc
     return anonymized_text
 
-def get_entity_positions(text: str or spacy.tokens.Doc):
+def get_entity_positions(text: str or Doc):
         """
         Get the starting and ending positions of named entities
         from text.
@@ -53,7 +54,7 @@ def get_entity_positions(text: str or spacy.tokens.Doc):
         global nlp
 
         # get list of tokens if type is spacy doc or string
-        if isinstance(text, spacy.tokens.Doc):
+        if isinstance(text, Doc):
             doc = text
         elif isinstance(text, str):
             # make string spacy doc and tokenize to utilize spacy tokenizer
