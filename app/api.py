@@ -2,12 +2,28 @@ from typing import Optional
 
 import uvicorn
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 from utils.entity_anonymizer import get_entity_positions, x_anonymize
 
 
 api = FastAPI()
 
+class Text(BaseModel):
+    """Data Model for Text received by the requests."""
+    name: str = 'Text'
+    text: str
+
+class AnonymizedText(BaseModel):
+    """Data Model for X Anonymized Text send by the responses."""
+    name: str = 'Anonymized Text'
+    len: int
+    text: str
+
+class EntityPositions(BaseModel):
+    name: str = 'Entity Positions'
+    len: int
+    entities: list
 
 @api.get("/")
 def get_root():
