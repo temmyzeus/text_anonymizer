@@ -1,5 +1,29 @@
+import requests
 import streamlit as st
 from utils.entity_anonymizer import nlp, x_anonymize, get_entity_positions
+
+url: str = '0.0.0.0'
+port: str = '8000'
+
+def get_x_anomymize(text: str):
+    global url, port
+    full_url = f'http://{url}:{port}/x_anonymize/'
+    json = {
+        "name": "Text",
+        "text": text
+    }
+    response = requests.post(full_url, json=json)
+    return response.json()
+
+def get_ent_pos(text: str):
+    global url, port
+    full_url = f'http://{url}:{port}/ent_pos/'
+    json = {
+        "name": "Text",
+        "text": text
+    }
+    response = requests.post(full_url, json=json)
+    return response.json()
 
 
 st.title('Text Anonymizer')
@@ -24,8 +48,9 @@ if text:
     doc = nlp(text)
     st.caption('Texts and Entities')
     if (pos_or_x == 'Get Entity Positions'):
-        entity_pos = get_entity_positions(text)
+        # entity_pos = get_entity_positions(text)
+        entity_pos = get_ent_pos(text)
         st.write(entity_pos)
     elif (pos_or_x == 'X Anonymize Entities'):
-        anonymized_text = x_anonymize(text)
+        anonymized_text = get_x_anomymize(text)
         st.write(anonymized_text)
