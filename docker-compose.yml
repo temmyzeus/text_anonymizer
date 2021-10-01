@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: "./app"
+      dockerfile: "Dockerfile.api"
+    container_name: text_api
+    image: "text_anonymizer:api"
+    ports:
+    - "8000:8000"
+    working_dir: "/text_anonymize/api"
+    volumes:
+    - ./app:/text_anonymize/api
+    networks:
+      - anonymize-net
+    entrypoint: python3
+    command:
+      api.py
+
+  webapp:
+    build:
+      context: "./app"
+      dockerfile: "Dockerfile.webapp"
+    container_name: text_app
+    image: "text_anonymizer:app"
+    ports:
+    - "8501:8501"
+    working_dir: "/text_anonymize/app"
+    volumes:
+    - ./app:/text_anonymize/app
+    environment:
+    - API_CONT_NAME='text_api'
+    - API_CONT_PORT='8000'
+    networks:
+       - anonymize-net
+    entrypoint: streamlit
+    command:
+      run frontend.py
+    depends_on:
+      - api
+
+networks:
+  anonymize-net:
+    driver: bridge
