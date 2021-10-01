@@ -1,6 +1,6 @@
 import requests
 import streamlit as st
-from utils.entity_anonymizer import nlp, x_anonymize, get_entity_positions
+from utils.entity_anonymizer import nlp
 
 url: str = '0.0.0.0'
 port: str = '8000'
