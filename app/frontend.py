@@ -2,12 +2,9 @@ import requests
 import streamlit as st
 from utils.entity_anonymizer import nlp
 
-url: str = '0.0.0.0'
-port: str = '8000'
 
 def get_x_anomymize(text: str):
-    global url, port
-    full_url = f'http://{url}:{port}/x_anonymize/'
+    full_url = 'http://api:8000/x_anonymize/'
     json = {
         "name": "Text",
         "text": text
@@ -17,7 +14,7 @@ def get_x_anomymize(text: str):
 
 def get_ent_pos(text: str):
     global url, port
-    full_url = f'http://{url}:{port}/ent_pos/'
+    full_url = 'http://api:8000/ent_pos/'
     json = {
         "name": "Text",
         "text": text
