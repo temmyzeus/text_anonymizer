@@ -45,7 +45,6 @@ if text:
     doc = nlp(text)
     st.caption('Texts and Entities')
     if (pos_or_x == 'Get Entity Positions'):
-        # entity_pos = get_entity_positions(text)
         entity_pos = get_ent_pos(text)
         st.write(entity_pos)
     elif (pos_or_x == 'X Anonymize Entities'):
