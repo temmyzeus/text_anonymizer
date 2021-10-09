@@ -24,19 +24,26 @@ The API can anonymize in 2 ways:
 
 
 
+#### First, we create a network so both containers and communicate
+
+```
+sudo docker network create --driver bridge <your-network-name>
+```
+
+
+
 ## API
 
 To setup API Image
 
 ```bash
-sudo docker build -f ./app/Dockerfile.api .
-sudo docker tag <IMAGE ID> text_anonymizer/api
+sudo docker build -t text_anonymizer:api -f ./app/Dockerfile.api .
 ```
 
 To create API Container
 
 ```bash
-sudo docker run -d --name text_api -p 8000:8000 text_anonymizer/api
+sudo docker run -d --name api -p 8000:8000 text_anonymizer:api --network <your-network-name>
 ```
 
 ## WebApp
@@ -44,12 +51,12 @@ sudo docker run -d --name text_api -p 8000:8000 text_anonymizer/api
 To start up docker web app image
 
 ```bash
-sudo docker build -f ./app/Dockerfile.webapp .
-sudo docker tag <IMAGE ID> text_anonymizer/app
+sudo docker build -t text_anonymizer:app -f ./app/Dockerfile.webapp .
 ```
 
 To start up the web app container
 
 ```bash
-sudo docker run -d --name text_app -p 8501:8501 text_anonymizer/app
+sudo docker run -d --name app -p 80:8501 text_anonymizer:app --network <your-network-name>
 ```
+

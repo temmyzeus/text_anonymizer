@@ -5,7 +5,7 @@ WORKDIR /text_anonymize/web_app
 
 RUN apt-get update
 
-RUN pip install spacy streamlit
+RUN pip install spacy==3.1 streamlit==0.84.0
 
 RUN python3 -m spacy download en_core_web_sm
 
@@ -21,8 +21,8 @@ RUN bash -c 'echo -e "\
             enableCORS = false\n\
             " > /root/.streamlit/config.toml'
 
-COPY . /text_anonymize/web_app/
+COPY ./app /text_anonymize/web_app/
 
 EXPOSE 8501
 
-CMD [ "streamlit", "run", "app/frontend.py" ]
+CMD [ "streamlit", "run", "frontend.py" ]

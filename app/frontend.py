@@ -22,6 +22,12 @@ def get_ent_pos(text: str):
     response = requests.post(full_url, json=json)
     return response.json()
 
+st.markdown('''
+        #### Built by Temiloluwa Awoyele
+        #### [Github](https://github.com/temmyzeus) | \
+        [Twitter](https://twitter.com/temmyzeus100) | \
+        [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/)
+        ''')
 
 st.title('Text Anonymizer')
 
@@ -39,6 +45,8 @@ with st.form(key='form'):
     submit_button = st.form_submit_button(
         label='Anonymize Text'
     )
+
+st.caption('Code can be found here: https://github.com/temmyzeus/text_anonymizer')
 
 # run if text is entered and submitted
 if text:
