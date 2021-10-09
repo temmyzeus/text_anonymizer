@@ -25,7 +25,7 @@ services:
     container_name: text_app
     image: "text_anonymizer:app"
     ports:
-    - "8501:8501"
+    - "80:8501"
     working_dir: "/text_anonymize/app"
     volumes:
     - ./app:/text_anonymize/app
