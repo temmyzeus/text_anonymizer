@@ -21,8 +21,8 @@ RUN bash -c 'echo -e "\
             enableCORS = false\n\
             " > /root/.streamlit/config.toml'
 
-COPY . /text_anonymize/web_app/
+COPY ./app /text_anonymize/web_app/
 
 EXPOSE 8501
 
-CMD [ "streamlit", "run", "app/frontend.py" ]
+CMD [ "streamlit", "run", "frontend.py" ]
