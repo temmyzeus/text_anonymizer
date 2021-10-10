@@ -47,6 +47,3 @@ def get_anonymized(text: Text):
         len=len(anonymized_text),
         text=anonymized_text
     )
-
-if __name__ == '__main__':
-    uvicorn.run('api:api', host='0.0.0.0', port=8000)
