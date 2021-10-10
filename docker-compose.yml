@@ -3,7 +3,7 @@ version: "3"
 services:
   api:
     build:
-      context: "./app"
+      context: "."
       dockerfile: "Dockerfile.api"
     container_name: text_api
     image: "text_anonymizer:api"
@@ -20,7 +20,7 @@ services:
 
   webapp:
     build:
-      context: "./app"
+      context: "."
       dockerfile: "Dockerfile.webapp"
     container_name: text_app
     image: "text_anonymizer:app"
