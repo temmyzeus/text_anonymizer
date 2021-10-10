@@ -45,7 +45,7 @@ with st.form(key='form'):
     submit_button = st.form_submit_button(
         label='Anonymize Text'
     )
-
+show_api_out = st.checkbox(label='Show raw API output', value=False)
 st.caption('Code can be found here: https://github.com/temmyzeus/text_anonymizer')
 
 # run if text is entered and submitted
@@ -54,7 +54,15 @@ if text:
     st.caption('Texts and Entities')
     if (pos_or_x == 'Get Entity Positions'):
         entity_pos = get_ent_pos(text)
-        st.write(entity_pos)
+        # Show raw api out it true, else show just the text
+        if show_api_out:
+            st.write(entity_pos)
+        else:
+            st.write(entity_pos['entities'])
     elif (pos_or_x == 'X Anonymize Entities'):
         anonymized_text = get_x_anomymize(text)
-        st.write(anonymized_text)
+        # Show raw api out it true, else show just the text
+        if show_api_out:
+            st.write(anonymized_text)
+        else:
+            st.write(anonymized_text['text'])
