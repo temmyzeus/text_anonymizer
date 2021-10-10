@@ -62,12 +62,11 @@ def get_entity_positions(text: str or Doc):
         else:
             raise TypeError('Text must be String or Spacy Doc')
 
-        # entities and their positions
-        ent_n_positions: list = list()
         entities = doc.ents
-
-        for token in entities:
-            start = token.start_char
-            end = token.end_char
-            ent_n_positions.append((token.text, start, end))
+        # entities and their positions
+        ent_n_positions:list = [{
+            'word': token.text,
+            'start':token.start_char,
+            'stop':token.end_char
+        } for token in entities]
         return ent_n_positions
