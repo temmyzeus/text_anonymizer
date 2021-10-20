@@ -14,9 +14,9 @@ services:
     - ./app:/text_anonymize/api
     networks:
       - anonymize-net
-    entrypoint: python3
+    entrypoint: uvicorn
     command:
-      api.py
+      api:api --proxy-headers --host 0.0.0.0 --port 8000
 
   webapp:
     build:
@@ -29,14 +29,11 @@ services:
     working_dir: "/text_anonymize/app"
     volumes:
     - ./app:/text_anonymize/app
-    environment:
-    - API_CONT_NAME='text_api'
-    - API_CONT_PORT='8000'
     networks:
        - anonymize-net
-    entrypoint: streamlit
+    entrypoint: streamlit run
     command:
-      run frontend.py
+      --server.port 8501 frontend.py
     depends_on:
       - api
 
