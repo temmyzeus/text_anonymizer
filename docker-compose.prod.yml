@@ -4,35 +4,32 @@ services:
   api:
     build:
       context: "."
-      dockerfile: "./app/Dockerfile.api"
-    container_name: api
+      dockerfile: "Dockerfile.api"
+    container_name: text_api
     image: "text_anonymizer:api"
     ports:
     - "8000:8000"
     working_dir: "/text_anonymize/api"
     networks:
       - anonymize-net
-    entrypoint: python3
+    entrypoint: uvicorn
     command:
-      api.py
+      api:api --proxy-headers --host 0.0.0.0 --port 8000
     restart: always
 
   webapp:
     build:
       context: "."
-      dockerfile: "./app/Dockerfile.webapp"
-    container_name: app
+      dockerfile: "Dockerfile.webapp"
+    container_name: text_app
     image: "text_anonymizer:app"
     ports:
     - "80:8501"
-    environment:
-    - API_CONT_NAME='text_api'
-    - API_CONT_PORT='8000'
     networks:
        - anonymize-net
-    entrypoint: streamlit
+    entrypoint: streamlit run
     command:
-      run frontend.py
+      --server.port 8501 frontend.py
     depends_on:
       - api
     restart: always
