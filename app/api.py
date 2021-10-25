@@ -2,6 +2,7 @@ from typing import Optional
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from utils.entity_anonymizer import entity_positions, x_anonymize
@@ -25,9 +26,18 @@ class EntityPositions(BaseModel):
     len: int
     entities: list
 
-@api.get("/")
+@api.get("/", response_class=HTMLResponse)
 def get_root():
-    return "Text Anonymizer Root API"
+    return """
+        <html>
+            <h1>
+                Text Anonymizer Root API
+            </h1>
+            <h3>
+                To view API documentation go to <a href="/docs">Docs Here</a> or <a href="/redoc">Redocs Here</a>
+            </h3>
+        </html>
+        """
 
 
 @api.post("/ent_pos/")
