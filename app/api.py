@@ -12,7 +12,7 @@ api = FastAPI()
 
 class Text(BaseModel):
     """Data Model for Text received by the requests."""
-    name: str = 'Text'
+    name: str = 'Input Text'
     text: str
 
 class AnonymizedText(BaseModel):
@@ -24,7 +24,7 @@ class AnonymizedText(BaseModel):
 class EntityPositions(BaseModel):
     name: str = 'Entity Positions'
     len: int
-    entities: list
+    entities: list[dict]
 
 @api.get("/", response_class=HTMLResponse)
 def get_root():
@@ -40,8 +40,8 @@ def get_root():
         """
 
 
-@api.post("/ent_pos/")
-def get_pos(text: Text):
+@api.post("/entity_positions/", response_model=EntityPositions)
+def get_entity_positions(text: Text):
 
     ent_pos = entity_positions(text.text)
     return EntityPositions(
@@ -49,7 +49,7 @@ def get_pos(text: Text):
         entities=ent_pos
     )
 
-@api.post('/x_anonymize/')
+@api.post('/x_anonymize/', response_model=AnonymizedText)
 def get_anonymized(text: Text):
 
     anonymized_text = x_anonymize(text.text)
