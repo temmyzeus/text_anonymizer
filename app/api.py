@@ -4,7 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from utils.entity_anonymizer import get_entity_positions, x_anonymize
+from utils.entity_anonymizer import entity_positions, x_anonymize
 
 
 api = FastAPI()
@@ -33,7 +33,7 @@ def get_root():
 @api.post("/ent_pos/")
 def get_pos(text: Text):
 
-    ent_pos = get_entity_positions(text.text)
+    ent_pos = entity_positions(text.text)
     return EntityPositions(
         len=len(ent_pos),
         entities=ent_pos

@@ -38,7 +38,7 @@ def x_anonymize(text: str or Doc) -> str:
         # doc = anonymized_doc
     return anonymized_text
 
-def get_entity_positions(text: str or Doc) -> List[Dict[str, str]]:
+def entity_positions(text: str or Doc) -> List[Dict[str, str]]:
         """
         Get the starting and ending positions of named entities
         from text.
@@ -49,7 +49,7 @@ def get_entity_positions(text: str or Doc) -> List[Dict[str, str]]:
 
         Returns:
         --------
-            ent_n_positions: List[Dict[str]]
+            ent_n_positions: List[Dict[str, str]]
         """
         # specify global variables used
         global nlp

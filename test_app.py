@@ -1,9 +1,9 @@
 import unittest
-from app import get_entity_positions
+from app import entity_positions
 
 
 class TestApp(unittest.TestCase):
-    def test_get_entity_positions(self):
+    def test_entity_positions(self):
         text_1 = ('The Taliban’s violent crackdown on protests against their hardline'
                 ' rule has already led to four documented deaths, according to a UN'
                 ' human rights official who said the group had used live ammunition,'
@@ -25,7 +25,7 @@ class TestApp(unittest.TestCase):
         # positions starts counting from 0
         # for text_1
         self.assertListEqual(
-            list1=get_entity_positions(text_1),
+            list1=entity_positions(text_1),
             list2=[
                 ('Taliban', 4, 11),
                 ('four', 91, 95),
@@ -38,7 +38,7 @@ class TestApp(unittest.TestCase):
 
         # for text_2
         self.assertListEqual(
-            list1=get_entity_positions(text_2),
+            list1=entity_positions(text_2),
             list2=[
                 ('Taliban', 25, 32),
                 ('Islamist', 123, 131),
@@ -49,7 +49,7 @@ class TestApp(unittest.TestCase):
 
         # for text_3
         self.assertListEqual(
-            list1=get_entity_positions(text_3),
+            list1=entity_positions(text_3),
             list2=[
                 ('Shamdasani', 49, 59),
                 ('one', 156, 159),
@@ -60,4 +60,4 @@ class TestApp(unittest.TestCase):
         )
 
 test_app = TestApp()
-test_app.test_get_entity_positions()
+test_app.test_entity_positions()
