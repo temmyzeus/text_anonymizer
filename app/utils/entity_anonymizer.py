@@ -38,7 +38,7 @@ def x_anonymize(text: str or Doc) -> str:
         # doc = anonymized_doc
     return anonymized_text
 
-def get_entity_positions(text: str or Doc) -> List[Dict[str]]:
+def get_entity_positions(text: str or Doc) -> List[Dict[str, str]]:
         """
         Get the starting and ending positions of named entities
         from text.
