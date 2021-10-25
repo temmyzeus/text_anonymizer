@@ -1,3 +1,4 @@
+from typing import Dict, List
 import en_core_web_sm
 from spacy.tokens import Doc
 
@@ -37,7 +38,7 @@ def x_anonymize(text: str or Doc) -> str:
         # doc = anonymized_doc
     return anonymized_text
 
-def get_entity_positions(text: str or Doc):
+def get_entity_positions(text: str or Doc) -> List[Dict[str]]:
         """
         Get the starting and ending positions of named entities
         from text.
@@ -48,7 +49,7 @@ def get_entity_positions(text: str or Doc):
 
         Returns:
         --------
-            ent_n_positions: list
+            ent_n_positions: List[Dict[str]]
         """
         # specify global variables used
         global nlp
