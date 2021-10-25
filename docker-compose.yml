@@ -6,7 +6,7 @@ services:
       context: "."
       dockerfile: "Dockerfile.api"
     container_name: text_api
-    image: "text_anonymizer:api"
+    image: "text_anonymizer:api_dev"
     ports:
     - "8000:8000"
     working_dir: "/text_anonymize/api"
@@ -23,7 +23,7 @@ services:
       context: "."
       dockerfile: "Dockerfile.webapp"
     container_name: text_app
-    image: "text_anonymizer:app"
+    image: "text_anonymizer:app_dev"
     ports:
     - "80:8501"
     working_dir: "/text_anonymize/app"
