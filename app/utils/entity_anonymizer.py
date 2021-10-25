@@ -19,11 +19,11 @@ def x_anonymize(text: str or Doc) -> str:
     # specify global variables used
     global nlp
 
-    # get list of tokens if type is spacy doc or string
+    # validate input type
     if isinstance(text, Doc):
         doc = text
     elif isinstance(text, str):
-        # make string spacy doc and tokenize to utilize spacy tokenizer
+        # make string spacy doc type
         doc = nlp(text.strip())
     else:
         raise TypeError('Text must be String or Spacy Doc')
@@ -54,11 +54,11 @@ def get_entity_positions(text: str or Doc) -> List[Dict[str]]:
         # specify global variables used
         global nlp
 
-        # get list of tokens if type is spacy doc or string
+        # validate input type
         if isinstance(text, Doc):
             doc = text
         elif isinstance(text, str):
-            # make string spacy doc and tokenize to utilize spacy tokenizer
+            # make string spacy doc type
             doc = nlp(text.strip())
         else:
             raise TypeError('Text must be String or Spacy Doc')
