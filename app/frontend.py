@@ -23,8 +23,8 @@ def get_ent_pos(text: str):
     return response.json()
 
 st.markdown('''
-        #### Built by Temiloluwa Awoyele
-        #### [Github](https://github.com/temmyzeus) | \
+        ##### Built by Temiloluwa Awoyele
+        ##### [Github](https://github.com/temmyzeus) | \
         [Twitter](https://twitter.com/temmyzeus100) | \
         [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/)
         ''')
