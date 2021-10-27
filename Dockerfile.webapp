@@ -5,7 +5,7 @@ WORKDIR /text_anonymize/web_app
 
 RUN apt-get update
 
-RUN pip install spacy==3.1 streamlit==0.84.0
+RUN pip install spacy==3.1 streamlit==1.1.0
 
 RUN python3 -m spacy download en_core_web_sm
 
