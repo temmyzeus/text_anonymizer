@@ -14,7 +14,7 @@ def get_x_anomymize(text: str):
 
 def get_ent_pos(text: str):
     global url, port
-    full_url = 'http://api:8000/ent_pos/'
+    full_url = 'http://api:8000/entity_positions/'
     json = {
         "name": "Text",
         "text": text
