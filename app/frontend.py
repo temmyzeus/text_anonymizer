@@ -66,3 +66,10 @@ if text:
             st.write(anonymized_text)
         else:
             st.write(anonymized_text['text'])
+
+        # Download Text when X_Anonymized
+        st.download_button(
+                label='Download',
+                data=anonymized_text['text'],
+                help='Download anonymized text'
+        )
