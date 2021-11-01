@@ -26,8 +26,42 @@ st.markdown('''
         ##### Built by Temiloluwa Awoyele
         ##### [Github](https://github.com/temmyzeus) | \
         [Twitter](https://twitter.com/temmyzeus100) | \
-        [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/)
+        [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/) \
+        [Go API] (http://ec2-3-235-197-114.compute-1.amazonaws.com:8000)
         ''')
+
+about = st.sidebar.markdown(
+    """
+    ## About the App
+    This app is a Text Anonymizer that helps to obscure sensitive informations i.e Naming Entites like
+    person, place, time, cardinal e.t.c in text.
+
+    Requets to API can be sent on 2 paths:
+
+    1. x_anonymize => Replaces naming entities with X's
+    ```
+    http://ec2-3-235-197-114.compute-1.amazonaws.com:8000/x_anonymize
+    ```
+    2. entity_positions => Gets positions of all named entities
+    ```
+    http://ec2-3-235-197-114.compute-1.amazonaws.com:8000/entity_positions
+    ```
+
+    Send POST Requests via Python
+    ```
+    # Send Post Request to API using Python
+    import requests
+    send_json = {
+        'name': 'Input Text',
+        'text': 'Your Text Here'
+    }
+    x_anonymize_api = 'http://ec2-3-235-197-114.compute-1.amazonaws.com:8000/x_anonymize'
+    get_entity_positions_api = 'http://ec2-3-235-197-114.compute-1.amazonaws.com:8000/entity_positions'
+    response = requests.post(x_anonymize_api, json=send_json)
+    print(reponse.text)
+    ```
+    """
+)
 
 st.title('Text Anonymizer')
 
