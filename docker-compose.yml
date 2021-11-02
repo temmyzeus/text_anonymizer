@@ -33,7 +33,7 @@ services:
        - anonymize-net
     entrypoint: streamlit run
     command:
-      --server.port 8501 frontend.py
+      --server.port 8501 "Text Anonymizer.py"
     depends_on:
       - api
 

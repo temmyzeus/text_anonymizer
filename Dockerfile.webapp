@@ -27,4 +27,4 @@ EXPOSE 8501
 
 ENTRYPOINT [ "streamlit", "run" ]
 
-CMD [ "--server.port", "8501", "frontend.py" ]
+CMD [ "--server.port", "8501", "Text Anonymizer.py" ]
