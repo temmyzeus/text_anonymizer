@@ -26,8 +26,8 @@ st.markdown('''
         ##### Built by Temiloluwa Awoyele
         ##### [Github](https://github.com/temmyzeus) | \
         [Twitter](https://twitter.com/temmyzeus100) | \
-        [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/) \
-        [Go API] (http://ec2-3-235-197-114.compute-1.amazonaws.com:8000)
+        [LinkedIn](https://www.linkedin.com/in/temiloluwa-awoyele/) | \
+        [Go to API] (http://ec2-3-235-197-114.compute-1.amazonaws.com:8000)
         ''')
 
 about = st.sidebar.markdown(
