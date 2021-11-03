@@ -64,7 +64,7 @@ about = st.sidebar.markdown(
 )
 
 st.title('Text Anonymizer')
-
+st.write('###### Check sidebar for more info')
 # create a batch input widget
 with st.form(key='form'):
     text = st.text_area(
